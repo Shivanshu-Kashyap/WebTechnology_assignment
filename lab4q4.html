@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Content Change</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+#mainSection {
+margin: 50px auto;
+padding: 20px;
+width: 80%;
+border: 2px solid #ccc;
+}
+#contentOne {
+background-color: #f2f2f2;
+padding: 20px;
+text-align: center;
+}
+#contentTwo {
+background-color: #ddd;
+padding: 20px;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="mainSection">
+<h1>welcome to web technology lab!</h1>
+<p>This is the content of the main section.</p>
+</div>
+<button id="changeContent">Change Content</button>
+<div id="contentTwo" style="display: none;">
+<h1>this is problem T4.</h1>
+<p>This is my forth lab and i am happy with my progress till now.</p>
+</div>
+<script>
+const mainSection = document.getElementById("mainSection");
+const changeContentButton = document.getElementById("changeContent");
+const contentTwo = document.getElementById("contentTwo");
+function changeContent() {
+mainSection.innerHTML = contentTwo.innerHTML;
+
+}
+changeContentButton.addEventListener('click', changeContent);
+</script>
+</body>
+</html>

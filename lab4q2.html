@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color Change</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+h1 {
+text-align: center;
+margin-top: 50px;
+}
+#myButton {
+display: block;
+margin: 50px auto;
+padding: 10px 20px;
+font-size: 48pt;
+}
+</style>
+</head>
+
+<body>
+<h1 id="myHeading" style="color: red; background-color: lightgreen;">browser change it's
+color.</h1>
+<button id="myButton">Change color</button>
+<script>
+const heading = document.getElementById("myHeading");
+const button = document.getElementById("myButton");
+function changeColorAndText() {
+const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+document.body.style.backgroundColor = randomColor;
+heading.innerText = "New color!";
+button.innerText = "Change again";
+button.style.fontSize = "16px";
+heading.style.fontSize = "48pt";
+}
+button.addEventListener('click', changeColorAndText);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spinning</title>
+<style>
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f0f0f0;
+}
+h2 {
+font-size: 24px;
+transition: transform 1s;
+}
+.spin {
+animation: spin 2s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+</style>
+<script>
+function changeText() {
+const input = document.getElementById('inputBox');
+const h2 = document.getElementById('hello');
+h2.textContent = input.value;
+h2.classList.add('spin');
+setTimeout(() => {
+h2.classList.remove('spin');
+}, 1000);
+}
+</script>
+</head>
+<body>
+<h2 id="hello">Hello</h2>
+
+<input type="text" id="inputBox" placeholder="Type a word or phrase...">
+<button onclick="changeText()">Change Text</button>
+</body>
+</html>

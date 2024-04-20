@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+font-family: Arial, sans-serif;
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+th, td {
+padding: 10px;
+border: 1px solid #ddd;
+text-align: left;
+}
+th {
+background-color: #f2f2f2;
+}
+td:after {
+content: "";
+display: block;
+width: 100%;
+height: 1px;
+background-color: #ccc;
+margin-top: 10px;
+}
+li {
+margin-bottom: 5px;
+}
+
+li::before {
+content: "•";
+margin-right: 5px;
+}
+li:not(:last-child):after {
+content: "";
+display: block;
+width: 100%;
+height: 1px;
+background-color: #ccc;
+margin-top: 10px;
+}
+</style>
+<title>Country-Capital Table</title>
+</head>
+<body>
+<h1>Country-Capital Table</h1>
+<table>
+<tr>
+<th>Countries</th>
+<th>Capitals</th>
+</tr>
+<tr>
+<td>
+<li>India</li>
+<li>Iran</li>
+<li> Italy</li>
+<li>Israel</li>
+<li>Jamaica</li>
+</td>
+<td>
+<li>New Delhi</li>
+<li>Tehran</li>
+<li>Rome</li>
+<li> Jerusalem</li>
+<li>Kingston</li>
+</td>
+</tr>
+
+</table>
+</body>
+</html>

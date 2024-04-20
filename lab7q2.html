@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping List</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+}
+#container {
+width: 500px;
+margin: 20px auto;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+padding: 8px;
+border-bottom: 1px solid #ddd;
+text-align: left;
+}
+.purchased {
+text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<h1>Shopping List</h1>
+<p>Total Page Visits: <span id="visit-count"></span></p>
+<input type="text" id="item" placeholder="Enter item...">
+<input type="number" id="price" placeholder="Enter price...">
+<button onclick="addItem()">Add Item</button>
+<table id="shopping-list">
+<thead>
+<tr>
+<th>Serial Number</th>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead>
+
+<tbody id="item-list"></tbody>
+</table>
+</div>
+<script>
+// Retrieve the shopping list from local storage
+document.addEventListener('DOMContentLoaded', function() {
+var savedList = JSON.parse(localStorage.getItem('shoppingList'));
+var visitCount = localStorage.getItem('pageVisits') || 0;
+document.getElementById('visit-count').textContent = visitCount;
+if (savedList) {
+var itemList = document.getElementById('item-list');
+savedList.forEach(function(item) {
+addItemToTable(item.name, item.price, itemList);
+});
+}
+localStorage.setItem('pageVisits', ++visitCount);
+});
+function addItemToTable(name, price, itemList) {
+var row = itemList.insertRow();
+var serialNumber = itemList.rows.length;
+var serialCell = row.insertCell(0);
+var nameCell = row.insertCell(1);
+var priceCell = row.insertCell(2);
+serialCell.textContent = serialNumber;
+nameCell.textContent = name;
+priceCell.textContent = price.toFixed(2);
+row.onclick = function() {
+row.classList.toggle("purchased");
+updateLocalStorage();
+};
+}
+function addItem() {
+var itemInput = document.getElementById("item");
+var priceInput = document.getElementById("price");
+var itemName = itemInput.value.trim();
+var itemPrice = parseFloat(priceInput.value);
+if (itemName !== "" && !isNaN(itemPrice)) {
+var itemList = document.getElementById("item-list");
+addItemToTable(itemName, itemPrice, itemList);
+updateLocalStorage();
+
+itemInput.value = "";
+priceInput.value = "";
+}
+}
+function updateLocalStorage() {
+var itemList = document.getElementById("item-list");
+var shoppingList = [];
+for (var i = 0; i < itemList.rows.length; i++) {
+var name = itemList.rows[i].cells[1].textContent;
+var price = parseFloat(itemList.rows[i].cells[2].textContent);
+shoppingList.push({name: name, price: price});
+}
+localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+}
+</script>
+</body>
+</html>

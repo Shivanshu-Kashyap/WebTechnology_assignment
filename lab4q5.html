@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+color: #2ecc71;
+font-size: 2rem;
+text-align: left;
+background-color: transparent;
+transition: all 0.5s;
+}
+.big-font {
+font-size: 4rem;
+}
+.centered {
+text-align: center;
+}
+
+.bg-color {
+background-color: #389BD6;
+}
+</style>
+</head>
+<body>
+<h1 id="heading">This is a colorful heading!</h1>
+<button onclick="changeHeadingStyle()">Change Heading Style</button>
+<script>
+let headingStyle = 0;
+function changeHeadingStyle() {
+const heading = document.getElementById('heading');
+switch (headingStyle) {
+case 0:
+heading.classList.add('big-font');
+heading.textContent = 'Big and Bold Heading';
+headingStyle = 1;
+break;
+case 1:
+heading.classList.add('centered');
+heading.textContent = 'Heading with a Background Color';
+headingStyle = 2;
+break;
+case 2:
+heading.classList.remove('big-font');
+heading.classList.remove('centered');
+heading.classList.add('bg-color');
+heading.textContent = 'Colorful Heading';
+headingStyle = 0;
+break;
+}
+}
+</script>
+</body>
+</html>

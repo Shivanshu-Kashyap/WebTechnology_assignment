@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counting List</title>
+<style>
+#countList {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+#countList li {
+font-size: 24px;
+margin: 10px 0;
+}
+</style>
+<script>
+let count = 0;
+function incrementCount() {
+count++;
+const list = document.getElementById('countList');
+const listItem = document.createElement('li');
+listItem.textContent = count;
+listItem.style.fontSize = `${24 + count / 2}px`;
+list.appendChild(listItem);
+}
+</script>
+</head>
+<body>
+<button onclick="incrementCount()">Increment Count</button>
+<ul id="countList"></ul>
+</body>
+</html>

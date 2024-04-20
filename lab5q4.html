@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Calculator</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f4f4f4;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<label for="billAmount">Bill Amount (₹):</label>
+<input type="number" id="billAmount" min="0" step="0.01"><br>
+<label for="tipPercentage">Tip Percentage (%):</label>
+<input type="number" id="tipPercentage" min="0" step="1"><br>
+<label for="splitNumber">Number of People to Split:</label>
+<input type="number" id="splitNumber" min="1"><br>
+<button onclick="calculateTip()">Calculate Tip</button><br>
+<div id="result"></div>
+</div>
+<script>
+function calculateTip() {
+var billAmount = parseFloat(document.getElementById("billAmount").value);
+var tipPercentage = parseFloat(document.getElementById("tipPercentage").value);
+var splitNumber = parseInt(document.getElementById("splitNumber").value);
+if (isNaN(billAmount) || isNaN(tipPercentage) || isNaN(splitNumber) || billAmount <= 0 ||
+tipPercentage < 0 || splitNumber <= 0) {
+document.getElementById("result").innerText = "Please enter valid values.";
+return;
+
+}
+var tipAmount = (billAmount * tipPercentage) / 100;
+var totalAmount = billAmount + tipAmount;
+var splitAmount = totalAmount / splitNumber;
+document.getElementById("result").innerHTML = `
+Tip Amount: ₹${tipAmount.toFixed(2)}<br>
+Total Amount: ₹${totalAmount.toFixed(2)}<br>
+Amount per Person: ₹${splitAmount.toFixed(2)} each
+`;
+}
+</script>
+</body>
+</html>

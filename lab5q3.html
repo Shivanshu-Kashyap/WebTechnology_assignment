@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Calculator</title>
+<style>
+body {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+margin: 0;
+}
+#calculator {
+display: flex;
+
+align-items: center;
+}
+input[type="text"] {
+width: 50px;
+margin: 0 5px;
+}
+button {
+margin: 0 5px;
+padding: 8px 12px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+button:hover {
+background-color: blue;
+color: white;
+}
+#result {
+margin-top: 10px;
+}
+</style>
+<script>
+function add() {
+const in1 = document.querySelector("#in1");
+const in2 = document.querySelector("#in2");
+const result = document.querySelector("#result");
+result.innerText = Number.parseInt(in1.value) + Number.parseInt(in2.value);
+}
+function subtract() {
+const in1 = document.querySelector("#in1");
+const in2 = document.querySelector("#in2");
+const result = document.querySelector("#result");
+result.innerText = Number.parseInt(in1.value) - Number.parseInt(in2.value);
+}
+function multiply() {
+const in1 = document.querySelector("#in1");
+const in2 = document.querySelector("#in2");
+const result = document.querySelector("#result");
+result.innerText = Number.parseInt(in1.value) * Number.parseInt(in2.value);
+}
+function divide() {
+const in1 = document.querySelector("#in1");
+const in2 = document.querySelector("#in2");
+const result = document.querySelector("#result");
+
+result.innerText = Number.parseInt(in1.value) / Number.parseInt(in2.value);
+}
+</script>
+</head>
+<body>
+<div id="calculator">
+<input type="text" id="in1" value="0">
+<input type="text" id="in2" value="0">
+<button onclick="add()">+</button>
+<button onclick="subtract()">-</button>
+<button onclick="multiply()">*</button>
+<button onclick="divide()">/</button>
+</div>
+<p id="result"></p>
+</body>
+</html>
